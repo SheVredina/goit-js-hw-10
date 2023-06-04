@@ -1,0 +1,93 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+</head>
+<body>
+  <input type="text" id="datetime-picker" />
+  <button type="button" data-start>Start</button>
+
+  <div class="timer">
+    <div class="field">
+      <span class="value" data-days>00</span>
+      <span class="label">Days</span>
+    </div>
+    <div class="field">
+      <span class="value" data-hours>00</span>
+      <span class="label">Hours</span>
+    </div>
+    <div class="field">
+      <span class="value" data-minutes>00</span>
+      <span class="label">Minutes</span>
+    </div>
+    <div class="field">
+      <span class="value" data-seconds>00</span>
+      <span class="label">Seconds</span>
+    </div>
+  </div>
+
+  <script>
+    // Функция для запуска таймера обратного отсчета
+    function startCountdown(targetDate) {
+      // Получаем элементы для отображения значений таймера
+      const daysElement = document.querySelector('[data-days]');
+      const hoursElement = document.querySelector('[data-hours]');
+      const minutesElement = document.querySelector('[data-minutes]');
+      const secondsElement = document.querySelector('[data-seconds]');
+
+      // Обновление значений таймера
+      function updateTimer() {
+        const currentDate = new Date().getTime();
+        const timeDifference = targetDate - currentDate;
+
+        // Вычисление оставшегося времени в днях, часах, минутах и секундах
+        const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+        // Обновление значений на странице
+        daysElement.textContent = formatTimeValue(days);
+        hoursElement.textContent = formatTimeValue(hours);
+        minutesElement.textContent = formatTimeValue(minutes);
+        secondsElement.textContent = formatTimeValue(seconds);
+
+        // Проверка, если время истекло, останавливаем таймер
+        if (timeDifference <= 0) {
+          clearInterval(timerInterval);
+        }
+      }
+
+      // Функция для форматирования значений времени (добавление нуля в начало, если значение меньше 10)
+      function formatTimeValue(value) {
+        return value < 10 ? `0${value}` : value;
+      }
+
+      // Обновление таймера каждую секунду
+      const timerInterval = setInterval(updateTimer, 1000);
+    }
+
+    // Инициализация flatpickr для выбора даты и времени
+    flatpickr("#datetime-picker", {
+      enableTime: true,
+      dateFormat: "Y-m-d H:i",
+      onChange: function(selectedDates) {
+        // При выборе новой даты и времени запускаем таймер
+        const targetDate = selectedDates[0].getTime();
+        startCountdown(targetDate);
+      }
+    });
+
+    // Обработчик события для кнопки "Start"
+    const startButton = document.querySelector('[data-start]');
+    startButton.addEventListener('click', function() {
+      const selectedDate = flatpickrInstance.selectedDates[0];
+      if (selectedDate) {
+        const targetDate = selectedDate.getTime();
+        startCountdown(targetDate);
+      }
+    });
+  </script>
+</body>
+</html> -->
