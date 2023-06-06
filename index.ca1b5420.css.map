@@ -1,0 +1,1 @@
+{"mappings":"ACAA,wBAIA","sources":["index.ca1b5420.css","src/css/common.css"],"sourcesContent":["* {\n  box-sizing: border-box;\n}\n\nselect {\n  max-width: 300px;\n}\n\n/*# sourceMappingURL=index.ca1b5420.css.map */\n","* {\n  box-sizing: border-box;\n}\n\nselect {\n  max-width: 300px;;\n}\n"],"names":[],"version":3,"file":"index.ca1b5420.css.map"}
