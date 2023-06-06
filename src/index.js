@@ -2,26 +2,20 @@ import SlimSelect from 'slim-select';
 import Notiflix from 'notiflix';
 import { fetchBreeds, fetchCatByBreed } from './cat-api.js';
 
-
 const breedSelect = document.querySelector('.breed-select');
 const loader = document.querySelector('.loader');
 const error = document.querySelector('.error');
 const catInfo = document.querySelector('.cat-info');
 
-
-
-// Function to create and append an option to the breed select element
 function createBreedOption(breed) {
-       error.style.display = 'none';
+  error.style.display = 'none';
 
   const option = document.createElement('option');
   option.value = breed.id;
   option.textContent = breed.name;
   breedSelect.appendChild(option);
-
 }
 
-// Function to display cat information
 function displayCatInfo(cat) {
   catInfo.innerHTML = `
     <img src="${cat.url}" alt="Cat Image" width= "300" />
@@ -31,11 +25,8 @@ function displayCatInfo(cat) {
   catInfo.style.display = 'block';
 }
 
-// Event listener for breed select change
 breedSelect.addEventListener('change', () => {
-  
   const selectedBreedId = breedSelect.value;
-
 
   if (selectedBreedId) {
     loader.style.display = 'block';
@@ -48,10 +39,7 @@ breedSelect.addEventListener('change', () => {
         loader.style.display = 'none';
       })
       .catch(() => {
-        Notiflix.Notify.info(
-          `❌Такого котика не найдено, поищите другого...`
-        );
-        // error.style.display = 'block';
+        Notiflix.Notify.info(`❌Такого котика не найдено, поищите другого...`);
         loader.style.display = 'none';
       });
   } else {
@@ -59,19 +47,14 @@ breedSelect.addEventListener('change', () => {
   }
 });
 
-// Initial loading of breeds
-// loader.style.display = 'block';
-
 fetchBreeds()
   .then(breeds => {
     breeds.forEach(breed => createBreedOption(breed));
-    // breedSelect.style.display = 'block';
     loader.style.display = 'none';
   })
   .catch(() => {
     Notiflix.Notify.warning(
       `Oops! Something went wrong! Try reloading the page!`
     );
-    // error.style.display = 'block';
     loader.style.display = 'none';
   });
