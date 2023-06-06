@@ -1,4 +1,5 @@
 import SlimSelect from 'slim-select';
+import Notiflix from 'notiflix';
 import { fetchBreeds, fetchCatByBreed } from './cat-api.js';
 
 
@@ -47,7 +48,10 @@ breedSelect.addEventListener('change', () => {
         loader.style.display = 'none';
       })
       .catch(() => {
-        error.style.display = 'block';
+        Notiflix.Notify.info(
+          `❌Такого котика не найдено, поищите другого...`
+        );
+        // error.style.display = 'block';
         loader.style.display = 'none';
       });
   } else {
@@ -61,10 +65,13 @@ breedSelect.addEventListener('change', () => {
 fetchBreeds()
   .then(breeds => {
     breeds.forEach(breed => createBreedOption(breed));
-    breedSelect.style.display = 'block';
+    // breedSelect.style.display = 'block';
     loader.style.display = 'none';
   })
   .catch(() => {
-    error.style.display = 'block';
+    Notiflix.Notify.warning(
+      `Oops! Something went wrong! Try reloading the page!`
+    );
+    // error.style.display = 'block';
     loader.style.display = 'none';
   });

@@ -1,5 +1,5 @@
 export function fetchBreeds() {
-    return fetch('https://api.thecatapi.com/v1/breeds', {
+    return fetch('https://api.thecatapi.com/v1/breeds1', {
       headers: {
         'x-api-key': 'live_7yYHuDPpFkyKyQErxLN1dqTgZaLad5hn7EX5jaRCe9IQmcVU8f7VbYxTGSYOmvrw'
       }
